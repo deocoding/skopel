@@ -1,3 +1,3 @@
-# SKOPA SMA-3
+# SI-SKOPEL SMA3
 
-Aplikasi Skor Pelanggaran Siswa SMA 3
+Sistem Informasi Skor Pelanggaran Siswa SMA 3
