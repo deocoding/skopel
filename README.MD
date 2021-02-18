@@ -1,9 +1,18 @@
-##  PANDUAN PEMBUATAN APLIKASI SKOPEL SMA3
+#  PANDUAN PEMBUATAN APLIKASI SKOPEL SMA3
 
 ### BUAT KOTAK VIRTUAL UNTUK MENYIMPAN DEPENDENSI SECARA LOKAL
-1. apt-get install python3-venv
-2. python3 -m venv env
-3. source env/bin/activate
+1. Install paket venv python3
+    ```
+    apt-get install python3-venv
+    ```
+2. Install venv pada folder proyek
+    ```
+    python3 -m venv env
+    ```
+3. Aktifkan venv
+    ```
+    source env/bin/activate
+    ```
 
 ### INSTALL DJANGO
 1. pip install django
