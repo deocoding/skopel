@@ -14,7 +14,7 @@
     ```
 * Konfirmasi simpan data lokal
     ```
-    git commit -m "<apakenapabagaimana>" -m "<deskripsi>"
+    git commit -m "<dari:laptop/pc/online>" -m "<deskripsi>"
     ```
 * Upload perubahan ke repo online
     ```
@@ -44,10 +44,11 @@
     ```
 ---
 ### BUAT FOLDER PROYEK
+* Buat folder proyek
     ```
     mkdir <nama_proyek>
     ```
-
+* Masuk ke folder proyek
     ```
     cd <nama_proyek>
     ```
