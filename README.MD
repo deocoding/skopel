@@ -71,7 +71,7 @@
     source env/bin/activate
     ```
 ---
-### INSTALL DJANGO
+### INSTALL & PENGGUNAAN DJANGO
 * Install django
     ```
     pip install django
@@ -108,4 +108,23 @@
 
     def costumer(request):
         pass
+    ```
+* Buat file <nama_app>/urls.py, tambahkan:
+    ```
+    from django.urls import path
+    from . import views
+
+    urlpatterns = [
+        path('', views.home),
+        path('pelanggarans/', views.pelanggarans),
+        path('murid/', views.murid),
+        path('guru/', views.guru),
+    ]
+    ```
+* Edit <nama_proyek>/urls.py
+    ```
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('', include('skor.urls')),
+    ]
     ```

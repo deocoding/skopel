@@ -1,11 +1,14 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 def home(request):
-    pass
+    return HttpResponse('Home')
 
-def products(request):
-    pass
+def pelanggarans(request):
+    return HttpResponse('Pelanggaran')
 
-def costumer(request):
-    pass
+def murid(request):
+    return HttpResponse('Murid')
 
+def guru(request):
+    return HttpResponse('Guru')
