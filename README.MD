@@ -1,4 +1,55 @@
 #  PANDUAN PEMBUATAN APLIKASI SKOPEL SMA3
+### PANDUAN GIT
+* Clone dari repo online
+    ```
+    git clone <link_ssh_git>
+    ```
+* Lihat status tambah/ubah/hapus data
+    ```
+    git status
+    ```
+* Menambahkan status lokal
+    ```
+    git add .
+    ```
+* Konfirmasi simpan data lokal
+    ```
+    git commit -m "<apakenapabagaimana>" -m "<deskripsi>"
+    ```
+* Upload perubahan ke repo online
+    ```
+    git push origin <nama_branch>
+    ```
+---
+### UBAH GROUP FOLDER 
+* Arahkan ke folder proyek
+    ```
+    cd /path/to/repo.git
+    ```
+* Ubah grup folder (root/user) 
+    ```
+    sudo chgrp -R groupname .
+    ```
+* Ubah kapabilitas
+    ```
+    sudo chmod -R g+rwX .
+    ```
+* Ganti semua folder dan file
+    ```
+    find . -type d -exec chmod g+s '{}' +
+    ```
+* Ganti hak akses user pada folder proyek
+    ```
+    sudo chown -R $(whoami) <nama_proyek>
+    ```
+---
+### BUAT FOLDER PROYEK
+    ```
+    mkdir <nama_proyek>
+    ```
+    ```
+    cd <nama_proyek>
+    ```
 ---
 ### BUAT KOTAK VIRTUAL UNTUK MENYIMPAN DEPENDENSI SECARA LOKAL
 * Install paket venv python3
@@ -23,25 +74,19 @@
     ```
     django-admin startproject <nama_proyek> .
     ```
----
-### UBAH GROUP FOLDER 
-* Arahkan ke folder proyek
+* Menjalankan server pada localhost dengan port 8080
     ```
-    cd /path/to/repo.git
+    python3 manage.py runserver 0.0.0.0:8080
     ```
-* Ubah grup folder (root/user) 
+* Buat app baru
     ```
-    sudo chgrp -R groupname .
+    python3 manage.py startapp <nama_app>
     ```
-* Ubah kapabilitas
+* Tambahkan app baru pada settings.py agar dapat digunakan
     ```
-    sudo chmod -R g+rwX .
+    nano <nama_proyek>/settings.py
     ```
-* Ganti semua folder dan file
+    Tambah di baris akhir:
     ```
-    find . -type d -exec chmod g+s '{}' +
-    ```
-* Ganti hak akses user pada folder proyek
-    ```
-    sudo chown -R $(whoami) <nama_proyek>
+    INSTALLED_APPS = ['<nama_app>']
     ```
