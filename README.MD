@@ -1,5 +1,9 @@
 #  PANDUAN PEMBUATAN APLIKASI SKOPEL SMA3
 ### PANDUAN GIT
+* Sebelum cloning dari repo hapus folder proyek dan semua file didalamnya
+    ```
+    sudo rm -rfv <nama_proyek>
+    ```
 * Clone dari repo online
     ```
     git clone <link_ssh_git>
