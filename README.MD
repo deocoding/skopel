@@ -19,6 +19,10 @@
     ```
     pip install django
     ```
+* Buat proyek baru
+    ```
+    django-admin startproject <nama_proyek> .
+    ```
 ---
 ### UBAH GROUP FOLDER 
 * Arahkan ke folder proyek
