@@ -200,3 +200,35 @@
         <h1>Dashboard</h1>
     {% endblock %}
     ```
+* Tambah navbar.html & ubah file base.html
+
+    navbar.html
+    ```
+    <h1>Navbar</h1>
+    <hr>
+    ```
+    base.html
+    ```
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SKOPEL SMA3</title>
+    </head>
+    <body>
+        
+        {% include 'skor/navbar.html' %}
+
+        {% block content %} 
+        
+        
+        
+        {% endblock %}
+
+        <hr>
+        <h5>Our footer</h5>
+    </body>
+    </html>
+    ```
