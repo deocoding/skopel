@@ -18,7 +18,7 @@
     ```
 * Konfirmasi simpan data lokal
     ```
-    git commit -m "<dari:laptop/pc/online>" -m "<deskripsi>"
+    git commit -m "<dari:laptop/desktop/online>" -m "<deskripsi>"
     ```
 * Upload perubahan ke repo online
     ```
@@ -130,4 +130,37 @@
         path('admin/', admin.site.urls),
         path('', include('skor.urls')),
     ]
+    ```
+* Tambah 4 file html dan edit <nama_app>/views.py
+    dashboard.html
+    ```
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SKOPEL SMA3</title>
+    </head>
+    <body>
+        <h1>Dashboard</h1>
+    </body>
+    </html>
+    ```
+    <nama_app>/views.py
+    ```
+    from django.shortcuts import render
+    from django.http import HttpResponse
+
+    def home(request):
+        return render(request, 'skor/dashboard.html')
+
+    def pelanggarans(request):
+        return render(request, 'skor/pelanggarans.html')
+
+    def murid(request):
+        return render(request, 'skor/murid.html')
+
+    def guru(request):
+        return render(request, 'skor/guru.html')
     ```

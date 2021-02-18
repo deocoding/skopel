@@ -2,13 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def home(request):
-    return HttpResponse('Home')
+    return render(request, 'skor/dashboard.html')
 
 def pelanggarans(request):
-    return HttpResponse('Pelanggaran')
+    return render(request, 'skor/pelanggarans.html')
 
 def murid(request):
-    return HttpResponse('Murid')
+    return render(request, 'skor/murid.html')
 
 def guru(request):
-    return HttpResponse('Guru')
+    return render(request, 'skor/guru.html')
