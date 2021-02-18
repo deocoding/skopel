@@ -4,4 +4,12 @@
 1. apt-get install python3-venv
 2. python3 -m venv env
 3. source env/bin/activate
-4. pip install django
+
+### INSTALL DJANGO
+1. pip install django
+
+### UBAH GROUP FOLDER 
+1. cd /path/to/repo.git
+2. sudo chgrp -R groupname .
+3. sudo chmod -R g+rwX .
+4. find . -type d -exec chmod g+s '{}' +
