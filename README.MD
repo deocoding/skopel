@@ -96,3 +96,16 @@
     ```
     INSTALLED_APPS = ['<nama_app>']
     ```
+* Ubah <nama_app>/views.py 
+    ```javascript
+    from django.shortcuts import render
+
+    def home(request):
+        pass
+
+    def products(request):
+        pass
+
+    def costumer(request):
+        pass
+    ```
