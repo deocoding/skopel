@@ -132,6 +132,7 @@
     ]
     ```
 * Tambah 4 file html dan edit <nama_app>/views.py
+
     dashboard.html
     ```
     <!DOCTYPE html>
