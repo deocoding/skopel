@@ -1,7 +1,7 @@
 # SI-SKOPEL SMA3
 
-Sistem Informasi Skor Pelanggaran Siswa SMA 3
+## Panduan
 
-Coba ubah di rumah
+1. BUAT KOTAK VIRTUAL UNTUK MENYIMPAN DEPENDENSI SECARA LOKAL
 
-Coba ubah di online
+python3 -m venv env
