@@ -13,12 +13,27 @@
     ```
     source env/bin/activate
     ```
-
+---
 ### INSTALL DJANGO
-1. pip install django
-
+* Install django
+    ```
+    pip install django
+    ```
+---
 ### UBAH GROUP FOLDER 
-1. cd /path/to/repo.git
-2. sudo chgrp -R groupname .
-3. sudo chmod -R g+rwX .
-4. find . -type d -exec chmod g+s '{}' +
+* Arahkan ke folder proyek
+    ```
+    cd /path/to/repo.git
+    ```
+* Ubah grup folder (root/user) 
+    ```
+    sudo chgrp -R groupname .
+    ```
+* Ubah kapabilitas
+    ```
+    sudo chmod -R g+rwX .
+    ```
+* Ganti semua folder dan file
+    ```
+    find . -type d -exec chmod g+s '{}' +
+    ```
