@@ -165,3 +165,38 @@
     def guru(request):
         return render(request, 'skor/guru.html')
     ```
+* Tambah base.html sebagai template & ubah file html yang dibuat sebelumnya
+
+    base.html
+    ```
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SKOPEL SMA3</title>
+    </head>
+    <body>
+        <h1>Navbar</h1>
+        <hr>
+
+        {% block content %} 
+        
+        
+        
+        {% endblock %}
+
+        <hr>
+        <h5>Our footer</h5>
+    </body>
+    </html>
+    ```
+    dashboard.html
+    ```
+    {% extends 'skor/base.html' %}
+
+    {% block content %}
+        <h1>Dashboard</h1>
+    {% endblock %}
+    ```
