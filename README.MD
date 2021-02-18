@@ -41,3 +41,7 @@
     ```
     find . -type d -exec chmod g+s '{}' +
     ```
+* Ganti hak akses user pada folder proyek
+    ```
+    sudo chown -R $(whoami) <nama_proyek>
+    ```
