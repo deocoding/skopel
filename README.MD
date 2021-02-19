@@ -232,3 +232,5 @@
     </body>
     </html>
     ```
+* Ganti semua isi navbar.html dengan kode dari navbar bootstrap 4 (cari di google)
+* Tambah bootstrap 4 css min di base.html (cari di google)
