@@ -234,4 +234,24 @@
     ```
 * Ganti semua isi navbar.html dengan kode dari navbar bootstrap 4 (cari di google)
 * Tambah bootstrap 4 css min di base.html (cari di google)
-* Tambah static setting, load static & tambah pindah css dari base 
+* Buat folder <nama_proyek>/static dengan sub folder css, js, images
+* Tambahkan baris perintah berikut pada settings.py 
+    ```
+    MEDIA_URL = '/images/'
+
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static')
+    ]
+    ```
+* Tambahkan baris perintah berikut untuk melink file static
+    ```
+    {% load static %}
+    ```
+* Tambahkan baris perintah berikut untuk memanggil file static berupa gambar
+    ```
+    <img src="{% static 'images/logo.png' %}">
+    ```
+* Tambahkan baris perintah berikut untuk memanggil file static berupa css dan js
+    ```
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+    ```
