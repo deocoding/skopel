@@ -4,11 +4,11 @@ from django.http import HttpResponse
 def home(request):
     return render(request, 'skor/dashboard.html')
 
-def pelanggarans(request):
-    return render(request, 'skor/pelanggarans.html')
+def pelanggaran(request):
+    return render(request, 'skor/pelanggaran.html')
 
-def murid(request):
-    return render(request, 'skor/murid.html')
+def siswa(request):
+    return render(request, 'skor/siswa.html')
 
-def guru(request):
-    return render(request, 'skor/guru.html')
+def pengajar(request):
+    return render(request, 'skor/pengajar.html')
