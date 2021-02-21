@@ -10,6 +10,7 @@ admin.site.register(Pelanggaran)
 @admin.register(Pengajar)
 class PengajarAdmin(admin.ModelAdmin):
     list_display = ("nama", "nip", "jabatan")
+    search_fields = ("nama__startswith", )
 
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
