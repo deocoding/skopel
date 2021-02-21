@@ -1,3 +1,59 @@
 from django.db import models
 
-# Create your models here.
+class Pengajar(models.Model):
+    JABATAN = (
+        ('Kepala Sekolah', 'Kepala Sekolah'),
+        ('Wakil Kepala Sekolah Bidang Kesiswaan', 'Wakil Kepala Sekolah Bidang Kesiswaan'),
+        ('Pembina Osis', 'Pembina Osis'),
+        ('Guru Kelas', 'Guru Kelas'),
+        ('Guru BK', 'Guru BK'),
+    )
+
+    nama = models.CharField(max_length=200, null=True)
+    nip = models.CharField(max_length=200, null=True)
+    jabatan = models.CharField(max_length=200, null=True, choices=JABATAN)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return self.nama
+
+class Kelas(models.Model):
+    nama = models.CharField(max_length=200, null=True)
+    wali = models.ForeignKey(Pengajar, null=True, on_delete=models.SET_NULL, related_name='wali')
+    bk = models.ForeignKey(Pengajar, null=True, on_delete=models.SET_NULL, related_name='bk')
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return self.nama
+
+class Siswa(models.Model):
+    nama = models.CharField(max_length=200, null=True)
+    nisn = models.CharField(max_length=200, null=True)
+    kelas = models.ForeignKey(Kelas, null=True, on_delete=models.SET_NULL)
+    ibu = models.CharField(max_length=200, null=True, blank=True)
+    ayah = models.CharField(max_length=200, null=True, blank=True)
+    wali = models.CharField(max_length=200, null=True, blank=True)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return self.nama
+
+class Pasal(models.Model):
+    nama = models.CharField(max_length=200, null=True, unique=True)
+    jenis = models.CharField(max_length=200, null=True, unique=True)
+    skor = models.IntegerField(null=True)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return self.nama
+
+class Pelanggaran(models.Model):
+    STATUS = (
+        ('Verifikasi', 'Verifikasi'),
+        ('Terbukti', 'Terbukti')
+    )
+
+    siswa = models.ForeignKey(Siswa, null=True, on_delete=models.SET_NULL)
+    pasal = models.ForeignKey(Pasal, null=True, on_delete=models.SET_NULL)
+    status = models.CharField(max_length=200, null=True, choices=STATUS)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
