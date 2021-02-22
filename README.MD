@@ -221,9 +221,7 @@
         
         {% include 'skor/navbar.html' %}
 
-        {% block content %} 
-        
-        
+        {% block content %}          
         
         {% endblock %}
 
