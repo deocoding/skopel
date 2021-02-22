@@ -16,6 +16,9 @@ class Pengajar(models.Model):
 
     def __str__(self):
         return self.nama
+    
+    class Meta:
+        verbose_name_plural = "Pengajar"
 
 class Kelas(models.Model):
     nama = models.CharField(max_length=200, null=True)
@@ -25,6 +28,9 @@ class Kelas(models.Model):
 
     def __str__(self):
         return self.nama
+
+    class Meta:
+        verbose_name_plural = "Kelas"
 
 class Siswa(models.Model):
     nama = models.CharField(max_length=200, null=True)
@@ -38,6 +44,9 @@ class Siswa(models.Model):
     def __str__(self):
         return self.nama
 
+    class Meta:
+        verbose_name_plural = "Siswa"
+
 class Pasal(models.Model):
     nama = models.CharField(max_length=200, null=True, unique=True)
     jenis = models.CharField(max_length=200, null=True, unique=True)
@@ -46,6 +55,9 @@ class Pasal(models.Model):
 
     def __str__(self):
         return self.nama
+    
+    class Meta:
+        verbose_name_plural = "Pasal"
 
 class Pelanggaran(models.Model):
     STATUS = (
@@ -57,3 +69,6 @@ class Pelanggaran(models.Model):
     pasal = models.ForeignKey(Pasal, null=True, on_delete=models.SET_NULL)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
+
+    class Meta:
+        verbose_name_plural = "Pelanggaran"
