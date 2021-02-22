@@ -305,7 +305,6 @@
 * Edit admin.py agar tabel yang baru dibuat dapat ditampilkan pada halaman admin
     ```
     from django.contrib import admin
-
     from .models import *
 
     admin.site.register(Pengajar)
