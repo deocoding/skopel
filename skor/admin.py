@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import *
 
 # admin.site.register(Kelas)
-admin.site.register(Siswa)
+# admin.site.register(Siswa)
 admin.site.register(Pasal)
 admin.site.register(Pelanggaran)
 
@@ -27,4 +27,16 @@ class KelasAdmin(admin.ModelAdmin):
         form.base_fields["nama"].label = "Kelas"
         form.base_fields["wali"].label = "Wali Kelas"
         form.base_fields["bk"].label = "Guru BK"
+        return form
+
+@admin.register(Siswa)
+class SiswaAdmin(admin.ModelAdmin):
+    list_display = ("nama", "nisn", "kelas")
+    search_fields = ("nama__startswith", )
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        form.base_fields["nama"].label = "Nama Siswa"
+        form.base_fields["nisn"].label = "NISN"
+        form.base_fields["kelas"].label = "Kelas"
         return form

@@ -17,6 +17,7 @@ class Pengajar(models.Model):
     def __str__(self):
         return self.nama
     
+    # Menampilkan Pengajar bukan Pengajars
     class Meta:
         verbose_name_plural = "Pengajar"
 
