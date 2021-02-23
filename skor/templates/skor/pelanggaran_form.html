@@ -1,0 +1,20 @@
+{% extends 'skor/base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{form}}
+                    <input type="submit" value="Simpan" name="Simpan">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

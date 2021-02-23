@@ -1,0 +1,24 @@
+{% extends 'skor/base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-body">
+                <p>Apakah anda yakin untuk menghapus pelanggaran siswa an. "{{pelanggaran}}"?</p>
+
+                <form action="{% url 'hapus_pelanggaran' pelanggaran.id %}" method="post">
+                    {% csrf_token %}
+                    <a class="btn btn-warning" href="{% url 'home' %}">Batal</a>
+
+                    <input class="btn btn-danger" type="submit" value="Ya" name="Ya">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

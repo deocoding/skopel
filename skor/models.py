@@ -63,9 +63,11 @@ class Pasal(models.Model):
 class Pelanggaran(models.Model):
     STATUS = (
         ('Verifikasi', 'Verifikasi'),
-        ('Terbukti', 'Terbukti')
+        ('Terbukti', 'Terbukti'),
+        ('Tidak Terbukti', 'Tidak Terbukti')
     )
 
+    pengajar = models.ForeignKey(Pengajar, null=True, on_delete=models.SET_NULL)
     siswa = models.ForeignKey(Siswa, null=True, on_delete=models.SET_NULL)
     pasal = models.ForeignKey(Pasal, null=True, on_delete=models.SET_NULL)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
@@ -73,3 +75,6 @@ class Pelanggaran(models.Model):
 
     class Meta:
         verbose_name_plural = "Pelanggaran"
+
+    def __str__(self):
+        return self.siswa.nama

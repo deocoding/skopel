@@ -1,66 +1,83 @@
 {% extends 'skor/base.html' %}
 
 {% block content %}
-<br>
+<div class="container-fluid">
+	<br>
 
-<div class="row">
-	<div class="col-md">
-		<div class="card card-body">
-			<h5>Customer:</h5>
-			<hr>
-			<a class="btn btn-outline-info  btn-sm btn-block" href="">Update Customer</a>
-			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Customer</a>
+	<div class="row">
+		<div class="col-md">
+			<div class="card card-body">
+				<h5>{{siswa.nama}}</h5>
+				<hr>
+				<a class="btn btn-outline-warning  btn-sm btn-block" href="">Ubah Siswa</a>
+				<a class="btn btn-outline-danger  btn-sm btn-block" href="">Hapus Siswa</a>
 
+			</div>
+		</div>
+
+		<div class="col-md">
+			<div class="card card-body">
+				<h5>Informasi :</h5>
+				<hr>
+				<p>NISN: {{siswa.nisn}}</p>
+				<p>Kelas: {{siswa.kelas}}</p>
+				<hr>
+				<p>Guru Wali Kelas: {{siswa.kelas.wali}}</p>
+				<p>Guru BK: {{siswa.kelas.bk}}</p>
+			</div>
+		</div>
+
+		<div class="col-md">
+			<div class="card card-body">
+				<h5>Total Pelanggaran</h5>
+				<hr>
+				<h1 style="text-align: center;padding: 10px">{{total_pelanggaran}}</h1>
+			</div>
 		</div>
 	</div>
 
-	<div class="col-md">
-		<div class="card card-body">
-			<h5>Contact Information</h5>
-			<hr>
-			<p>Email: </p>
-			<p>Phone: </p>
+
+	<br>
+	<div class="row">
+		<div class="col">
+			<div class="card card-body">
+				<form method="get">
+
+				<button class="btn btn-primary" type="submit">Cari</button>
+			</form>
+			</div>
 		</div>
+		
 	</div>
+	<br>
 
-	<div class="col-md">
-		<div class="card card-body">
-			<h5>Total Orders</h5>
-			<hr>
-			<h1 style="text-align: center;padding: 10px"></h1>
-		</div>
-	</div>
-</div>
+	<div class="row">
+		<div class="col-md">
+			<div class="card card-body">
+				<table class="table table-sm">
+					<tr>
+						<th>Siswa</th>
+						<th>Pengajar</th>
+						<th>Jenis Pelanggaran</th>
+						<th>Tanggal</th>
+						<th>Status</th>
+						<th>Ubah</th>
+						<th>Hapus</th>
+					</tr>
 
-
-<br>
-<div class="row">
-	<div class="col">
-		<div class="card card-body">
-			<form method="get">
-
-		    <button class="btn btn-primary" type="submit">Search</button>
-		  </form>
-		</div>
-	</div>
-	
-</div>
-<br>
-
-<div class="row">
-	<div class="col-md">
-		<div class="card card-body">
-			<table class="table table-sm">
-				<tr>
-					<th>Product</th>
-					<th>Category</th>
-					<th>Date Orderd</th>
-					<th>Status</th>
-					<th>Update</th>
-					<th>Remove</th>
-				</tr>
-
-			</table>
+					{% for pelanggaran in pelanggarans %}
+					<tr>
+						<td>{{pelanggaran.pengajar}}</td>
+						<td>{{pelanggaran.siswa}}</td>
+						<td>{{pelanggaran.pasal}}</td>
+						<td>{{pelanggaran.date_created}}</td>
+						<td>{{pelanggaran.status}}</td>
+						<td><a class="btn btn-sm btn-warning" href="">Ubah</a></td>
+						<td><a class="btn btn-sm btn-danger" href="">Hapus</a></td>
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
 		</div>
 	</div>
 </div>

@@ -6,19 +6,21 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-5">
-			<h5>SISWA:</h5>
+			<h5>SISWA :</h5>
 			<hr>
 			<div class="card card-body">
 				<a class="btn btn-primary  btn-sm btn-block" href="">Tambah Siswa</a>
 				<table class="table table-sm">
 					<tr>
-						<th>Siswa</th>
-						<th>NISN</th>
+						<th></th>
+						<th>Pengajar</th>
+						<th>NIP</th>
 					</tr>
-					{% for siswa in siswas %}
+					{% for pengajar in pengajars %}
 					<tr>
-						<td>{{siswa.nama}}</td>
-						<td>{{siswa.nisn}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'pengajar' pengajar.id %}">Lihat</a></td>
+						<td>{{pengajar.nama}}</td>
+						<td>{{pengajar.nip}}</td>
 					</tr>
 					{% endfor %}
 				</table>
@@ -26,13 +28,13 @@
 		</div>
 
 		<div class="col-md-7">
-			<h5>5 PELANGGARAN TERBARU</h5>
+			<h5>5 PELANGGARAN TERBARU :</h5>
 			<hr>
 			<div class="card card-body">
-				<a class="btn btn-primary btn-sm btn-block" href="">Tambah Pelanggaran</a>
 				<table class="table table-sm">
 					<tr>
 						<th>Siswa</th>
+						<th>Pengajar</th>
 						<th>Jenis Pelanggaran</th>
 						<th>Tanggal</th>
 						<th>Status</th>
@@ -42,11 +44,12 @@
 					{% for pelanggaran in pelanggarans %}
 					<tr>
 						<td>{{pelanggaran.siswa}}</td>
+						<td>{{pelanggaran.pengajar}}</td>
 						<td>{{pelanggaran.pasal}}</td>
 						<td>{{pelanggaran.date_created}}</td>
 						<td>{{pelanggaran.status}}</td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-sm btn-warning" href="{% url 'ubah_pelanggaran' pelanggaran.id %}">Ubah</a></td>
+						<td><a class="btn btn-sm btn-danger" href="{% url 'hapus_pelanggaran' pelanggaran.id %}">Hapus</a></td>
 					</tr>
 					{% endfor %}
 				</table>
