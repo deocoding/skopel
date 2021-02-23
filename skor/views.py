@@ -8,8 +8,8 @@ def home(request):
     pelanggarans = Pelanggaran.objects.all()
 
     context = {
-        'siswa': siswa,
-        'pelanggaran': pelanggaran
+        'siswas': siswa,
+        'pelanggarans': pelanggarans, 
     }
 
     return render(request, 'skor/dashboard.html', context)

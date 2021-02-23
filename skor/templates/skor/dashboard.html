@@ -15,16 +15,21 @@
 						<th>Siswa</th>
 						<th>NISN</th>
 					</tr>
-
+					{% for siswa in siswas %}
+					<tr>
+						<td>{{siswa.nama}}</td>
+						<td>{{siswa.nisn}}</td>
+					</tr>
+					{% endfor %}
 				</table>
 			</div>
 		</div>
 
 		<div class="col-md-7">
-			<h5>5 Pelanggaran Terbaru</h5>
+			<h5>5 PELANGGARAN TERBARU</h5>
 			<hr>
 			<div class="card card-body">
-				<a class="btn btn-primary  btn-sm btn-block" href="">Tambah Pelanggaran</a>
+				<a class="btn btn-primary btn-sm btn-block" href="">Tambah Pelanggaran</a>
 				<table class="table table-sm">
 					<tr>
 						<th>Siswa</th>
@@ -34,7 +39,16 @@
 						<th>Ubah</th>
 						<th>Hapus</th>
 					</tr>
-			
+					{% for pelanggaran in pelanggarans %}
+					<tr>
+						<td>{{pelanggaran.siswa}}</td>
+						<td>{{pelanggaran.pasal}}</td>
+						<td>{{pelanggaran.date_created}}</td>
+						<td>{{pelanggaran.status}}</td>
+						<td></td>
+						<td></td>
+					</tr>
+					{% endfor %}
 				</table>
 			</div>
 		</div>
