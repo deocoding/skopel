@@ -19,7 +19,7 @@ class Pengajar(models.Model):
     
     # Menampilkan Pengajar bukan Pengajars
     class Meta:
-        verbose_name_plural = "Pengajar"
+        verbose_name_plural = "    Pengajar"
 
 class Kelas(models.Model):
     nama = models.CharField(max_length=200, null=True)
@@ -31,7 +31,7 @@ class Kelas(models.Model):
         return self.nama
 
     class Meta:
-        verbose_name_plural = "Kelas"
+        verbose_name_plural = "   Kelas"
 
 class Siswa(models.Model):
     nama = models.CharField(max_length=200, null=True)
@@ -46,7 +46,7 @@ class Siswa(models.Model):
         return self.nama
 
     class Meta:
-        verbose_name_plural = "Siswa"
+        verbose_name_plural = "  Siswa"
 
 class Pasal(models.Model):
     nama = models.CharField(max_length=200, null=True, unique=True)
@@ -58,7 +58,7 @@ class Pasal(models.Model):
         return self.nama
     
     class Meta:
-        verbose_name_plural = "Pasal"
+        verbose_name_plural = " Pasal"
 
 class Pelanggaran(models.Model):
     STATUS = (

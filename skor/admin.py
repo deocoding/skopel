@@ -4,13 +4,13 @@ from .models import *
 
 # admin.site.register(Kelas)
 # admin.site.register(Siswa)
-admin.site.register(Pasal)
-admin.site.register(Pelanggaran)
+# admin.site.register(Pasal)
+# admin.site.register(Pelanggaran)
 
 @admin.register(Pengajar)
 class PengajarAdmin(admin.ModelAdmin):
     list_display = ("nama", "nip", "jabatan")
-    search_fields = ("nama__startswith", )
+    search_fields = ("nama", "nip", )
 
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
@@ -39,4 +39,28 @@ class SiswaAdmin(admin.ModelAdmin):
         form.base_fields["nama"].label = "Nama Siswa"
         form.base_fields["nisn"].label = "NISN"
         form.base_fields["kelas"].label = "Kelas"
+        return form
+
+@admin.register(Pasal)
+class PasalAdmin(admin.ModelAdmin):
+    list_display = ("nama", "jenis", "skor")
+    search_fields = ("jenis__startswith", )
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        form.base_fields["nama"].label = "Pasal"
+        form.base_fields["jenis"].label = "Jenis Pelanggaran"
+        form.base_fields["skor"].label = "Skor"
+        return form
+
+@admin.register(Pelanggaran)
+class PelanggaranAdmin(admin.ModelAdmin):
+    list_display = ("siswa", "pasal", "status")
+    search_fields = ("jenis__startswith", )
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        form.base_fields["siswa"].label = "Nama Siswa"
+        form.base_fields["pasal"].label = "Pasal Pelanggaran"
+        form.base_fields["status"].label = "Status"
         return form
