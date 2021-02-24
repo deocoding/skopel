@@ -1,17 +1,38 @@
 from django.db import models
 
+
+class Jabatan(models.Model):
+    nama = models.CharField(max_length=200, null=True)
+
+    def __str__(self):
+        return self.nama
+    
+    # Menampilkan Pengajar bukan Pengajars
+    class Meta:
+        verbose_name_plural = "      Jabatan"
+
+
 class Pengajar(models.Model):
-    JABATAN = (
-        ('Kepala Sekolah', 'Kepala Sekolah'),
-        ('Wakil Kepala Sekolah Bidang Kesiswaan', 'Wakil Kepala Sekolah Bidang Kesiswaan'),
-        ('Pembina Osis', 'Pembina Osis'),
-        ('Guru Kelas', 'Guru Kelas'),
-        ('Guru BK', 'Guru BK'),
+    # JABATAN = (
+    #     ('Kepala Sekolah', 'Kepala Sekolah'),
+    #     ('Wakil Kepala Sekolah Bidang Kesiswaan', 'Wakil Kepala Sekolah Bidang Kesiswaan'),
+    #     ('Pembina Osis', 'Pembina Osis'),
+    #     ('Wali Kelas', 'Wali Kelas'),
+    #     ('Guru Mapel', 'Guru Mapel'),
+    #     ('Guru BK', 'Guru BK'),
+    # )
+    STATUS = (
+        ('PNS', 'PNS'),
+        ('Guru Tidak Tetap', 'Guru Tidak Tetap'),
+        ('Guru Honorer', 'Guru Honorer'),
+        ('Lainnya', 'Lainnya')
     )
 
     nama = models.CharField(max_length=200, null=True)
     nip = models.CharField(max_length=200, null=True)
-    jabatan = models.CharField(max_length=200, null=True, choices=JABATAN)
+    status = models.CharField(max_length=200, null=True, choices=STATUS)
+    jabatan = models.ManyToManyField(Jabatan)
+    # jabatan = models.CharField(max_length=200, null=True, choices=JABATAN)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
@@ -34,13 +55,19 @@ class Kelas(models.Model):
         verbose_name_plural = "   Kelas"
 
 class Siswa(models.Model):
+    KELAMIN = (
+        ('Laki-laki', 'Laki-laki'),
+        ('Perempuan', 'Perempuan')
+    )
+
     nama = models.CharField(max_length=200, null=True)
     nisn = models.CharField(max_length=200, null=True)
+    kelamin = models.CharField(max_length=200, null=True, choices=KELAMIN)
     kelas = models.ForeignKey(Kelas, null=True, on_delete=models.SET_NULL)
-    ibu = models.CharField(max_length=200, null=True, blank=True)
-    ayah = models.CharField(max_length=200, null=True, blank=True)
-    wali = models.CharField(max_length=200, null=True, blank=True)
-    date_created = models.DateTimeField(auto_now_add=True, null=True)
+    # ibu = models.CharField(max_length=200, null=True, blank=True)
+    # ayah = models.CharField(max_length=200, null=True, blank=True)
+    # wali = models.CharField(max_length=200, null=True, blank=True)
+    # date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return self.nama

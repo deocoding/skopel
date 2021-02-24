@@ -60,7 +60,7 @@ def pengajar(request, pk):
         'total_laporan': total_laporan,
         'myFilter': myFilter
     }
-    print(laporans)
+    
     return render(request, 'skor/pengajar.html', context)
 
 def buatPelanggaran(request, pk):

@@ -7,9 +7,20 @@ from .models import *
 # admin.site.register(Pasal)
 # admin.site.register(Pelanggaran)
 
+@admin.register(Jabatan)
+class JabatanAdmin(admin.ModelAdmin):
+    # list_display = ("nama")
+    search_fields = ("nama",)
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        form.base_fields["nama"].label = "Jabatan"
+        return form
+
 @admin.register(Pengajar)
 class PengajarAdmin(admin.ModelAdmin):
-    list_display = ("nama", "nip", "jabatan")
+    # list_display = ("nama", "nip", "jabatan")
+    list_display = ("nama", "nip")
     search_fields = ("nama", "nip", )
 
     def get_form(self, request, obj=None, **kwargs):
