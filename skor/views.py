@@ -51,7 +51,8 @@ def pengajar(request, pk):
     laporans = pengajar.pelanggaran_set.all()
     total_laporan = laporans.count()
 
-    myFilter = PelanggaranFilter()
+    myFilter = PelanggaranFilter(request.GET, queryset=laporans)
+    laporans = myFilter.qs
 
     context = {
         'pengajar': pengajar,
