@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'skor',
+
+    'django_filters',
 ]
 
 MIDDLEWARE = [

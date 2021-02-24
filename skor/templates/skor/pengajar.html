@@ -19,9 +19,9 @@
             <div class="card card-body">
                 <h5>Informasi Pengajar</h5>
                 <hr>
-                <p>Nama: </p>
-                <p>NIP: </p>
-                <p>Jabatan: </p>
+                <p>Nama: {{pengajar.nama}}</p>
+                <p>NIP: {{pengajar.nip}}</p>
+                <p>Jabatan: {{pengajar.jabatan}}</p>
             </div>
         </div>
 
@@ -29,7 +29,7 @@
             <div class="card card-body">
                 <h5>Total Laporan</h5>
                 <hr>
-                <h1 style="text-align: center;padding: 10px"></h1>
+                <h1 style="text-align: center;padding: 10px">{{total_laporan}}</h1>
             </div>
         </div>
     </div>
@@ -40,7 +40,7 @@
         <div class="col">
             <div class="card card-body">
                 <form method="get">
-
+                    {{myFilter.form}}
                 <button class="btn btn-primary" type="submit">Cari</button>
             </form>
             </div>
@@ -61,7 +61,16 @@
                         <th>Ubah</th>
                         <th>Hapus</th>
                     </tr>
-
+                    {% for laporan in laporans %}
+                    <tr>
+                        <td>{{laporan.siswa}}</td>
+						<td>{{laporan.pasal}}</td>
+						<td>{{laporan.date_created}}</td>
+						<td>{{laporan.status}}</td>
+						<td><a class="btn btn-sm btn-warning" href="{% url 'ubah_pelanggaran' laporan.id %}">Ubah</a></td>
+						<td><a class="btn btn-sm btn-danger" href="{% url 'hapus_pelanggaran' laporan.id %}">Hapus</a></td>
+                    </tr>
+                    {% endfor %}
                 </table>
             </div>
         </div>

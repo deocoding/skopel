@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-# from django.http import HttpResponse
+from django.forms import inlineformset_factory
 
 from .models import *
 from .forms import PelanggaranForm
+from .filters import PelanggaranFilter
 
 def home(request):
     pengajars = Pengajar.objects.all()
@@ -47,23 +48,35 @@ def siswa(request, pk):
 
 def pengajar(request, pk):
     pengajar = Pengajar.objects.get(id=pk)
+    laporans = pengajar.pelanggaran_set.all()
+    total_laporan = laporans.count()
+
+    myFilter = PelanggaranFilter()
+
     context = {
-        'pengajar': pengajar
+        'pengajar': pengajar,
+        'laporans': laporans,
+        'total_laporan': total_laporan,
+        'myFilter': myFilter
     }
+    print(laporans)
     return render(request, 'skor/pengajar.html', context)
 
 def buatPelanggaran(request, pk):
+    PelanggaranFormSet = inlineformset_factory(Pengajar, Pelanggaran, fields=('siswa', 'pasal', 'status'), extra=5)
     pengajar = Pengajar.objects.get(id=pk)
-    form = PelanggaranForm(initial={'pengajar':pengajar})
+    formset = PelanggaranFormSet(queryset=Pelanggaran.objects.none(), instance=pengajar)
+    # form = PelanggaranForm(initial={'pengajar':pengajar})
     if request.method == 'POST':
         # print('Printing POST: ', request.POST)
-        form = PelanggaranForm(request.POST)
-        if form.is_valid():
-            form.save()
+        # form = PelanggaranForm(request.POST)
+        formset = PelanggaranFormSet(request.POST, instance=pengajar)
+        if formset.is_valid():
+            formset.save()
             return redirect('/')
     
     context = {
-        'form': form
+        'formset': formset
     }
 
     return render(request, 'skor/pelanggaran_form.html', context)
