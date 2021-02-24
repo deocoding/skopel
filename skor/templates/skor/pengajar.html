@@ -58,6 +58,7 @@
                         <th>Jenis Pelanggaran</th>
                         <th>Tanggal</th>
                         <th>Status</th>
+                        <th>Keterangan</th>
                         <th>Ubah</th>
                         <th>Hapus</th>
                     </tr>
@@ -67,6 +68,7 @@
 						<td>{{laporan.pasal}}</td>
 						<td>{{laporan.date_created}}</td>
 						<td>{{laporan.status}}</td>
+                        <td>{{laporan.keterangan}}</td>
 						<td><a class="btn btn-sm btn-warning" href="{% url 'ubah_pelanggaran' laporan.id %}">Ubah</a></td>
 						<td><a class="btn btn-sm btn-danger" href="{% url 'hapus_pelanggaran' laporan.id %}">Hapus</a></td>
                     </tr>

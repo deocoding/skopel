@@ -98,6 +98,7 @@ class Pelanggaran(models.Model):
     siswa = models.ForeignKey(Siswa, null=True, on_delete=models.SET_NULL)
     pasal = models.ForeignKey(Pasal, null=True, on_delete=models.SET_NULL)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
+    keterangan = models.CharField(max_length=1000, null=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     class Meta:
