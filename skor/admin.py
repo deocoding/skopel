@@ -1,8 +1,9 @@
 from django.contrib import admin
+# from django.contrib.auth.admin import UserAdmin
 
 from .models import *
 
-# admin.site.register(Kelas)
+# admin.site.register(Pengajar)
 # admin.site.register(Siswa)
 # admin.site.register(Pasal)
 # admin.site.register(Pelanggaran)

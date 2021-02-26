@@ -1,0 +1,34 @@
+{% extends 'skor/base.html' %}
+{% block content %}
+{% include 'skor/status.html' %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <table class="table table-sm">
+                    <tr>
+                        <th>Siswa</th>
+                        <th>Jenis Pelanggaran</th>
+                        <th>Tanggal</th>
+                        <th>Status</th>
+                        <th>Keterangan</th>
+                    </tr>
+                    {% for laporan in laporans %}
+                    <tr>
+                        <td>{{laporan.siswa}}</td>
+                        <td>{{laporan.pasal}}</td>
+                        <td>{{laporan.date_created}}</td>
+                        <td>{{laporan.status}}</td>
+                        <td>{{laporan.keterangan}}</td>
+                        <!-- <td><a class="btn btn-sm btn-warning" href="{% url 'ubah_pelanggaran' laporan.id %}">Ubah</a></td>
+                        <td><a class="btn btn-sm btn-danger" href="{% url 'hapus_pelanggaran' laporan.id %}">Hapus</a></td> -->
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+# from django.contrib.auth.models import AbstractUser
 
 
 class Jabatan(models.Model):
@@ -7,20 +10,11 @@ class Jabatan(models.Model):
     def __str__(self):
         return self.nama
     
-    # Menampilkan Pengajar bukan Pengajars
     class Meta:
         verbose_name_plural = "      Jabatan"
-
+    
 
 class Pengajar(models.Model):
-    # JABATAN = (
-    #     ('Kepala Sekolah', 'Kepala Sekolah'),
-    #     ('Wakil Kepala Sekolah Bidang Kesiswaan', 'Wakil Kepala Sekolah Bidang Kesiswaan'),
-    #     ('Pembina Osis', 'Pembina Osis'),
-    #     ('Wali Kelas', 'Wali Kelas'),
-    #     ('Guru Mapel', 'Guru Mapel'),
-    #     ('Guru BK', 'Guru BK'),
-    # )
     STATUS = (
         ('PNS', 'PNS'),
         ('Guru Tidak Tetap', 'Guru Tidak Tetap'),
@@ -28,11 +22,13 @@ class Pengajar(models.Model):
         ('Lainnya', 'Lainnya')
     )
 
+    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
     nama = models.CharField(max_length=200, null=True)
     nip = models.CharField(max_length=200, null=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
     jabatan = models.ManyToManyField(Jabatan)
     # jabatan = models.CharField(max_length=200, null=True, choices=JABATAN)
+    foto_profil = models.ImageField(null=True, default="user-profile-man.jpg", blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
@@ -41,6 +37,7 @@ class Pengajar(models.Model):
     # Menampilkan Pengajar bukan Pengajars
     class Meta:
         verbose_name_plural = "    Pengajar"
+
 
 class Kelas(models.Model):
     nama = models.CharField(max_length=200, null=True)
@@ -53,6 +50,7 @@ class Kelas(models.Model):
 
     class Meta:
         verbose_name_plural = "   Kelas"
+
 
 class Siswa(models.Model):
     KELAMIN = (
@@ -75,6 +73,7 @@ class Siswa(models.Model):
     class Meta:
         verbose_name_plural = "  Siswa"
 
+
 class Pasal(models.Model):
     nama = models.CharField(max_length=200, null=True, unique=True)
     jenis = models.CharField(max_length=200, null=True, unique=True)
@@ -86,6 +85,7 @@ class Pasal(models.Model):
     
     class Meta:
         verbose_name_plural = " Pasal"
+
 
 class Pelanggaran(models.Model):
     STATUS = (
